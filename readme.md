@@ -90,3 +90,14 @@ Update Product by ID
 
 ### DELETE: /producten/:id
 Delete Product by ID
+
+
+# Models
+
+Since the models are pretty straightforward, they are only explained globally.
+
+## Global explanation
+The Offerte model is at the root, this model contains basic information who the Offerte is for, what the address is, etc.
+Every Offerte has one or more HoofdCategorieën. A Hoofdcategorie is a model which only contains a name, and one or more SubCategorieën. 
+The same is true for SubCategorieën, it only contains a name and one or more Producten.
+Every Product contains information about the... yes, well, the Product! 
