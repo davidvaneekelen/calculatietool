@@ -6,11 +6,11 @@ var logger = require('morgan');
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-var indexRouter = require('./routes/index');
 var hoofdcategorieen = require('./routes/hoofdcategorieen');
 var subcategorieen = require('./routes/subcategorieen');
 var producten = require('./routes/producten');
 var offertes = require('./routes/offertes');
+var demo = require('./routes/demo');
 
 var app = express();
 
@@ -32,11 +32,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
 app.use('/hoofdcategorieen', hoofdcategorieen);
 app.use('/subcategorieen', subcategorieen);
 app.use('/producten', producten);
 app.use('/offertes', offertes);
+app.use('/demo', demo);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
