@@ -91,6 +91,14 @@ Update Product by ID
 ### DELETE: /producten/:id
 Delete Product by ID
 
+## Demo
+
+### GET: /demo
+Fill database with Demo data
+
+### DELETE: /demo
+Completely erase entire database
+
 
 # Models
 
