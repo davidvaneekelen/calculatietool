@@ -26,35 +26,164 @@ router.get('/', function(req, res, next) {
 		verkoopprijs: 1600,
 		artikelnummer: '20320149',
 		leverancier: 'www.smartsd.com'
-	}], function(err1, productObject) {
-		if (err1) return next(err1);
-		
-		// Create Camera's SubCategorie
-		SubCategorie.create({
-			naam: 'Camera\'s',
-			Producten: productObject
-		}, function(err2, subcategorieObject) {
-			if (err2) return next(err2);
-
-			// Create Cameratoezicht HoofdCategorie
-			HoofdCategorie.create({
-				naam: 'Cameratoezicht',
-				SubCategorieen: subcategorieObject
-			}, function(err3, hoofdcategorieObject) {
-				if (err3) return next(err3);
-
-				// Create Offerte
-				Offerte.create({
-					klant: 'Washin7 Nijmegen',
-					straathuisnummer: 'Hoofdstraat 1',
-					postcode: '1234AB',
-					plaats: 'Nijmegen',
-					telefoon: '01-23456789',
-					email: 'nijmegen@washin7.nl',
-					project: '2018-045',
-					HoofdCategorieen: hoofdcategorieObject
-				}, function(err4, offerteObject) {
-					res.json([offerteObject, hoofdcategorieObject, subcategorieObject, productObject]);
+	}], function(cameraProductErr, cameraProductObject) {
+		if (cameraProductErr) return next(cameraProductErr);
+		console.log('1');
+		// Create Recorders + Schijven Producten
+		Product.create([{
+			merk: 'Dahua',
+			model: 'DHI-NVR4416-16P-4KS2',
+			eigenschappen: ['Recorder', '16-kanaals', '16xPoE', 'SNMP', 'H.265'],
+			inkoopprijs: 700,
+			verkoopprijs: 896,
+			artikelnummer: '20320203',
+			leverancier: 'www.smartsd.com'
+		}, {
+			merk: 'WD',
+			model: 'Purple WD40PURZ',
+			eigenschappen: ['4TB'],
+			inkoopprijs: 100,
+			verkoopprijs: 160,
+			artikelnummer: 'WD40PURZ',
+			leverancier: 'www.update.nl'
+		}], function(recorderProductErr, recorderProductObject) {
+			if (recorderProductErr) return next(recorderProductErr);
+			console.log('2');
+			// Create Netwerk Toebehoren Producten
+			Product.create([{
+				merk: 'TP-Link',
+				model: 'TL-SG1008D',
+				eigenschappen: ['8-Port', 'Unmanaged', 'Gigabit'],
+				inkoopprijs: 22,
+				verkoopprijs: 45,
+				artikelnummer: '257584',
+				leverancier: 'www.azerty.nl'
+			}, {
+				merk: 'TP-Link',
+				model: 'Jetstream T1600G-28PS',
+				eigenschappen: ['24-Port', 'Managed', 'Gigabit', 'PoE+', 'SNMP', '4xSFP'],
+				inkoopprijs: 250,
+				verkoopprijs: 350,
+				artikelnummer: 'T1600G-28PS',
+				leverancier: 'www.routershop.nl'
+			}], function(networkProductErr, networkProductObject) {
+				if (networkProductErr) return next(networkProductErr);
+				console.log('3');
+				// Create Bekabeling Producten
+				Product.create([{
+					merk: 'Belden',
+					model: 'CAT5e U/FTP per meter',
+					inkoopprijs: 0.70,
+					verkoopprijs: 1.70,
+					artikelnummer: 'CAT5EUTP',
+					leverancier: 'www.tue.nl'
+				}, {
+					merk: 'Plastico Fantastico',
+					model: 'Installatiebuis 19mm (¾) per meter',
+					inkoopprijs: 1,
+					verkoopprijs: 2.20,
+					artikelnummer: 'INSTALLBUIS19MM',
+					leverancier: 'www.tue.nl'
+				}, {
+					merk: 'Plastico Fantastico',
+					model: 'Installatiebuis Koppelingen',
+					inkoopprijs: 0.20,
+					verkoopprijs: 0.40,
+					artikelnummer: 'INSTALLKOPP19MM',
+					leverancier: 'www.tue.nl'
+				}, {
+					merk: 'Plastico Fantastico',
+					model: 'Installatiebuis Bevestigingen',
+					inkoopprijs: 0.30,
+					verkoopprijs: 0.60,
+					artikelnummer: 'INSTALLBVST19MM',
+					leverancier: 'www.tue.nl'
+				}, {
+					merk: 'Belden',
+					model: 'UTP RJ45 Connector',
+					inkoopprijs: 0.45,
+					verkoopprijs: 0.85,
+					artikelnummer: 'UTPRJ45CONN',
+					leverancier: 'www.tue.nl'
+				}], function(wiringProductErr, wiringProductObject) {
+					if (wiringProductErr) return next(wiringProductErr);
+					console.log('4');
+					// Create Arbeid 'Producten'
+					Product.create([{
+						merk: 'Doevendans Beveiliging',
+						model: 'Installatiewerk',
+						inkoopprijs: 25,
+						verkoopprijs: 45,
+						artikelnummer: 'CAM-INSTALL',
+						leverancier: 'nvt'
+					}, {
+						merk: 'Doevendans Beveiliging',
+						model: 'Montagewerk',
+						inkoopprijs: 25,
+						verkoopprijs: 65,
+						artikelnummer: 'CAM-MONTAGE',
+						leverancier: 'nvt'
+					}, {
+						merk: 'Doevendans Beveiliging',
+						model: 'Programmeerwerk',
+						inkoopprijs: 25,
+						verkoopprijs: 85,
+						artikelnummer: 'CAM-PROGRAM',
+						leverancier: 'nvt'
+					}, {
+						merk: 'Doevendans Beveiliging',
+						model: 'Documenteerwerk',
+						inkoopprijs: 25,
+						verkoopprijs: 45,
+						artikelnummer: 'CAM-DOCUMEN',
+						leverancier: 'nvt'
+					}], function(labourProductErr, labourProductObject) {
+						if (labourProductErr) return next(labourProductErr);
+						console.log('5');
+						// Create Cameratoezicht SubCategorieën
+						SubCategorie.create([{
+							naam: 'Camera\'s',
+							Producten: cameraProductObject
+						}, {
+							naam: 'Recorders + Schijven',
+							Producten: recorderProductObject
+						}, {
+							naam: 'Netwerk Toebehoren',
+							Producten: networkProductObject
+						}, {
+							naam: 'Bekabeling',
+							Producten: wiringProductObject
+						}, {
+							naam: 'Arbeid',
+							Producten: labourProductObject
+						}], function(camSubCategoryErr, camSubCategoryObject) {
+							if (camSubCategoryErr) return next(camSubCategoryErr);
+							console.log('6');
+							// Create Cameratoezicht Hoofdcategorie
+							HoofdCategorie.create({
+								naam: 'Cameratoezicht',
+								SubCategorieen: camSubCategoryObject
+							}, function(camMainCategoryErr, camMainCategoryObject) {
+								if (camMainCategoryErr) return next(camMainCategoryErr);
+								console.log('7');
+								// Create Offerte entry
+								Offerte.create({
+									klant: 'Washin7 Nijmegen',
+									straathuisnummer: 'Hoofdstraat 1',
+									postcode: '1234AB',
+									plaats: 'Nijmegen',
+									telefoon: '01-23456789',
+									email: 'nijmegen@washin7.nl',
+									project: '2018-045',
+									HoofdCategorieen: camMainCategoryObject
+								}, function(err, data) {
+									if (err) return next(err);
+									console.log('8');
+									res.json(data);
+								});
+							});
+						});
+					});
 				});
 			});
 		});
@@ -75,34 +204,36 @@ router.delete('/', function(req, res, next) {
 			results.product = errProduct;
 		} else {
 			results.product = 'success';
-		}
-	});
-	// Delete all SubCategorieën
-	SubCategorie.remove({}, function(errSubcategorie, dataSubcategorie) {
-		if (errSubcategorie) {
-			results.subcategorie = errSubcategorie;
-		} else {
-			results.subcategorie = 'success'
-		}
-	});
-	// Delete all HoofdCategorieën
-	HoofdCategorie.remove({}, function(errHoofdcategorie, dataHoofdcategorie) {
-		if (errHoofdcategorie) {
-			results.hoofdcategorie = errHoofdcategorie;
-		} else {
-			results.hoofdcategorie = 'success';
-		}
-	});
-	// Delete all Offertes
-	Offerte.remove({}, function(errOfferte, dataOfferte) {
-		if (errOfferte) {
-			results.offerte = errOfferte;
-		} else {
-			results.offerte = 'success';
-		}
-	});
 
-	res.json(results);
+			// Delete all SubCategorieën
+			SubCategorie.remove({}, function(errSubcategorie, dataSubcategorie) {
+				if (errSubcategorie) {
+					results.subcategorie = errSubcategorie;
+				} else {
+					results.subcategorie = 'success';
+
+					// Delete all HoofdCategorieën
+					HoofdCategorie.remove({}, function(errHoofdcategorie, dataHoofdcategorie) {
+						if (errHoofdcategorie) {
+							results.hoofdcategorie = errHoofdcategorie;
+						} else {
+							results.hoofdcategorie = 'success';
+
+							// Delete all Offertes
+							Offerte.remove({}, function(errOfferte, dataOfferte) {
+								if (errOfferte) {
+									results.offerte = errOfferte;
+								} else {
+									results.offerte = 'success';
+									res.json(results);
+								}
+							});
+						}
+					});
+				}
+			});
+		}
+	});
 });
 
 module.exports = router;
