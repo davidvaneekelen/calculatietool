@@ -22,7 +22,7 @@ router.get('/populated', function(req, res, next) {
   });
 });
 
-/* GET SINGLE Category BY ID */
+/* GET SINGLE CATEGORY BY ID */
 router.get('/:id', function(req, res, next) {
   Category.findById(req.params.id, function(err, data) {
     if (err) return next(err);
@@ -30,7 +30,7 @@ router.get('/:id', function(req, res, next) {
   });
 });
 
-/* GET SINGLE Category BY ID POPULATED */
+/* GET SINGLE CATEGORY BY ID POPULATED */
 router.get('/:id/populated', function(req, res, next) {
   Category.findById(req.params.id).populate({
     path: 'ProductGroups',
@@ -41,7 +41,7 @@ router.get('/:id/populated', function(req, res, next) {
   });
 });
 
-/* SAVE Category */
+/* SAVE CATEGORY */
 router.post('/', function(req, res, next) {
   Category.create(req.body, function(err, data) {
     if (err) return next(err);
@@ -49,7 +49,7 @@ router.post('/', function(req, res, next) {
   });
 });
 
-/* UPDATE Category */
+/* UPDATE CATEGORY */
 router.put('/:id', function(req, res, next) {
   Category.findByIdAndUpdate(req.params.id, req.body, function(err, data) {
     if (err) return next(err);
@@ -57,7 +57,7 @@ router.put('/:id', function(req, res, next) {
   });
 });
 
-/* DELETE Category */
+/* DELETE CATEGORY */
 router.delete('/:id', function(req, res, next) {
   Category.findByIdAndRemove(req.params.id, req.body, function(err, data) {
     if (err) return next(err);
