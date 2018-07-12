@@ -25,6 +25,15 @@ Update Offerte by ID
 ### DELETE: /offers/:id
 Delete Offerte by ID
 
+### GET: /offers/:id/categories
+Get all Categories of Offer by ID
+
+### GET: /offers/:id/categories/productgroups
+Get all ProductGroups of all Categories of Offer by ID
+
+### GET: /offers/:id/categories/productgroups/products
+Get all Products of all ProductGroups of all Categories of Offer by ID
+
 
 ## Categories
 
