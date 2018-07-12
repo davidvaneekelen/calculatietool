@@ -2,93 +2,93 @@ Start app by running `npm start` or `nodemon` in root directory.
 
 # API Routes
 
-## Offerte
+## Offers
 
-### GET: /offertes
+### GET: /offers
 Get all Offertes
 
-### GET: /offertes/populated
+### GET: /offers/populated
 Get all Offertes; references to other models will be populated
 
-### GET: /offertes/:id
+### GET: /offers/:id
 Get one Offerte by ID
 
-### GET: /offertes/:id/populated
+### GET: /offers/:id/populated
 Get one offerte by ID; references to other models will be populated
 
-### POST: /offertes
+### POST: /offers
 Add new Offerte
 
-### PUT: /offertes/:id
+### PUT: /offers/:id
 Update Offerte by ID
 
-### DELETE: /offertes/:id
+### DELETE: /offers/:id
 Delete Offerte by ID
 
 
-## HoofdCategorie
+## Categories
 
-### GET: /hoofdcategorieen
-Get all HoofdCategorieen
+### GET: /categories
+Get all Categories
 
-### GET: /hoofdcategorieen/populated
-Get all HoofdCategorieen; references to other models will be populated
+### GET: /categories/populated
+Get all Categories; references to other models will be populated
 
-### GET: /hoofdcategorieen/:id
-Get one HoofdCategorie by ID
+### GET: /categories/:id
+Get one Category by ID
 
-### GET: /hoofdcategorieen/:id/populated
-Get one HoofdCategorie by ID; references to other models will be populated
+### GET: /categories/:id/populated
+Get one Category by ID; references to other models will be populated
 
-### POST: /hoofdcategorieen
-Add new HoofdCategorie
+### POST: /categories
+Add new Category
 
-### PUT: /hoofdcategorieen/:id
-Update HoofdCategorie by ID
+### PUT: /categories/:id
+Update Category by ID
 
-### DELETE: /hoofdcategorieen/:id
-Delete HoofdCategorie by ID
+### DELETE: /categories/:id
+Delete Category by ID
 
 
-## SubCategorie
+## ProductGroups
 
-### GET: /subcategorieen
-Get all SubCategorieen
+### GET: /productgroups
+Get all ProductGroups
 
-### GET: /subcategorieen/populated
-Get all SubCategorieen; references to other models will be populated
+### GET: /productgroups/populated
+Get all ProductGroups; references to other models will be populated
 
-### GET: /subcategorieen/:id
-Get one SubCategorie by ID
+### GET: /productgroups/:id
+Get one ProductGroup by ID
 
-### GET: /subcategorieen/:id/populated
-Get one SubCategorie by ID; references to other models will be populated
+### GET: /productgroups/:id/populated
+Get one ProductGroup by ID; references to other models will be populated
 
-### POST: /subcategorieen
-Add new SubCategorie
+### POST: /productgroups
+Add new ProductGroup
 
-### PUT: /subcategorieen/:id
-Update SubCategorie by ID
+### PUT: /productgroups/:id
+Update ProductGroup by ID
 
-### DELETE: /subcategorieen/:id
-Delete SubCategorie by ID
+### DELETE: /productgroups/:id
+Delete ProductGroup by ID
 
 
 ## Product
 
-### GET: /producten
-Get all Producten
+### GET: /products
+Get all Products
 
-### GET: /producten/:id
+### GET: /products/:id
 Get one Product by ID
 
-### POST: /producten
+### POST: /products
 Add new Product
 
-### PUT: /producten/:id
+### PUT: /products/:id
 Update Product by ID
 
-### DELETE: /producten/:id
+### DELETE: /products/:id
 Delete Product by ID
 
 ## Demo
@@ -105,7 +105,7 @@ Completely erase entire database
 Since the models are pretty straightforward, they are only explained globally.
 
 ## Global explanation
-The Offerte model is at the root, this model contains basic information who the Offerte is for, what the address is, etc.
-Every Offerte has one or more HoofdCategorieën. A Hoofdcategorie is a model which only contains a name, and one or more SubCategorieën. 
-The same is true for SubCategorieën, it only contains a name and one or more Producten.
+The Offer model is at the root, this model contains basic information who the Offer is for, what the address is, etc.
+Every Offer has one or more Categories. A Category is a model which only contains a name, and one or more ProductGroups. 
+The same is true for ProductGroups, it only contains a name and one or more Products.
 Every Product contains information about the... yes, well, the Product! 

@@ -1,63 +1,63 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-var SubCategorie = require('../models/SubCategorie.js');
+var ProductGroup = require('../models/ProductGroup.js');
 
-/* GET ALL SUBCATEGORIEEN */
+/* GET ALL PRODUCTGROUPS */
 router.get('/', function(req, res, next) {
-  SubCategorie.find(function (err, data) {
+  ProductGroup.find(function (err, data) {
     if (err) return next(err);
     res.json(data);
   });
 });
 
-/* GET ALL SUBCATEGORIEEN POPULATED*/
+/* GET ALL PRODUCTGROUPS POPULATED*/
 router.get('/populated', function(req, res, next) {
-  SubCategorie.find({}).populate({
-    path: 'Producten'
+  ProductGroup.find({}).populate({
+    path: 'Products'
   }).exec(function (err, data) {
     if (err) return next(err);
     res.json(data);
   });
 });
 
-/* GET SINGLE SUBCATEGORIE BY ID */
+/* GET SINGLE PRODUCTGROUP BY ID */
 router.get('/:id', function(req, res, next) {
-  SubCategorie.findById(req.params.id, function (err, data) {
+  ProductGroup.findById(req.params.id, function (err, data) {
     if (err) return next(err);
     res.json(data);
   });
 });
 
-/* GET SINGLE SUBCATEGORIE BY ID POPULATED */
+/* GET SINGLE PRODUCTGROUP BY ID POPULATED */
 router.get('/:id/populated', function(req, res, next) {
-  SubCategorie.findById(req.params.id).populate({
-    path: 'Producten'
+  ProductGroup.findById(req.params.id).populate({
+    path: 'Products'
   }).exec(function (err, data) {
     if (err) return next(err);
     res.json(data);
   });
 });
 
-/* SAVE SUBCATEGORIE */
+/* SAVE PRODUCTGROUP */
 router.post('/', function(req, res, next) {
-  SubCategorie.create(req.body, function (err, data) {
+  ProductGroup.create(req.body, function (err, data) {
     if (err) return next(err);
     res.json(data);
   });
 });
 
-/* UPDATE SUBCATEGORIE */
+/* UPDATE PRODUCTGROUP */
 router.put('/:id', function(req, res, next) {
-  SubCategorie.findByIdAndUpdate(req.params.id, req.body, function (err, data) {
+  ProductGroup.findByIdAndUpdate(req.params.id, req.body, function (err, data) {
     if (err) return next(err);
     res.json(data);
   });
 });
 
-/* DELETE SUBCATEGORIE */
+/* DELETE PRODUCTGROUP */
 router.delete('/:id', function(req, res, next) {
-  SubCategorie.findByIdAndRemove(req.params.id, req.body, function (err, data) {
+  ProductGroup.findByIdAndRemove(req.params.id, req.body, function (err, data) {
     if (err) return next(err);
     res.json(data);
   });

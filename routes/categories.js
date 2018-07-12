@@ -1,65 +1,65 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-var HoofdCategorie = require('../models/HoofdCategorie.js');
+var Category = require('../models/Category.js');
 
-/* GET ALL HOOFDCATEGORIEEN */
+/* GET ALL CATEGORIES */
 router.get('/', function(req, res, next) {
-  HoofdCategorie.find(function(err, data) {
+  Category.find(function(err, data) {
     if (err) return next(err);
     res.json(data);
   });
 });
 
-/* GET ALL HOOFDCATEGORIEEN POPULATED*/
+/* GET ALL CATEGORIES POPULATED*/
 router.get('/populated', function(req, res, next) {
-  HoofdCategorie.find({}).populate({
-    path: 'SubCategorieen',
-    populate: {path: 'Producten'}
+  Category.find({}).populate({
+    path: 'ProductGroups',
+    populate: {path: 'Products'}
   }).exec(function(err, data) {
     if (err) return next(err);
     res.json(data);
   });
 });
 
-/* GET SINGLE HOOFDCATEGORIE BY ID */
+/* GET SINGLE Category BY ID */
 router.get('/:id', function(req, res, next) {
-  HoofdCategorie.findById(req.params.id, function(err, data) {
+  Category.findById(req.params.id, function(err, data) {
     if (err) return next(err);
     res.json(data);
   });
 });
 
-/* GET SINGLE HOOFDCATEGORIE BY ID POPULATED */
+/* GET SINGLE Category BY ID POPULATED */
 router.get('/:id/populated', function(req, res, next) {
-  HoofdCategorie.findById(req.params.id).populate({
-    path: 'SubCategorieen',
-    populate: {path: 'Producten'}
+  Category.findById(req.params.id).populate({
+    path: 'ProductGroups',
+    populate: {path: 'Products'}
   }).exec(function(err, data) {
     if (err) return next(err);
     res.json(data);
   });
 });
 
-/* SAVE HOOFDCATEGORIE */
+/* SAVE Category */
 router.post('/', function(req, res, next) {
-  HoofdCategorie.create(req.body, function(err, data) {
+  Category.create(req.body, function(err, data) {
     if (err) return next(err);
     res.json(data);
   });
 });
 
-/* UPDATE HOOFDCATEGORIE */
+/* UPDATE Category */
 router.put('/:id', function(req, res, next) {
-  HoofdCategorie.findByIdAndUpdate(req.params.id, req.body, function(err, data) {
+  Category.findByIdAndUpdate(req.params.id, req.body, function(err, data) {
     if (err) return next(err);
     res.json(data);
   });
 });
 
-/* DELETE HOOFDCATEGORIE */
+/* DELETE Category */
 router.delete('/:id', function(req, res, next) {
-  HoofdCategorie.findByIdAndRemove(req.params.id, req.body, function(err, data) {
+  Category.findByIdAndRemove(req.params.id, req.body, function(err, data) {
     if (err) return next(err);
     res.json(data);
   });

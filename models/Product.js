@@ -1,13 +1,13 @@
 var mongoose = require('mongoose');
 
 var ProductSchema = new mongoose.Schema({
-  merk: String,
+  brand: String,
   model: String,
-  eigenschappen: [String],
-  inkoopprijs: Number,
-  verkoopprijs: Number,
-  artikelnummer: String,
-  leverancier: String
+  properties: [String],
+  purchasePrice: Number,
+  sellingPrice: Number,
+  articleNumber: String,
+  supplier: String
 });
 
 module.exports = mongoose.model('Product', ProductSchema);

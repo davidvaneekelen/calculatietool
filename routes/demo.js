@@ -2,180 +2,180 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 
-var Offerte = require('../models/Offerte.js');
-var HoofdCategorie = require('../models/HoofdCategorie.js');
-var SubCategorie = require('../models/SubCategorie.js');
+var Offer = require('../models/Offer.js');
+var Category = require('../models/Category.js');
+var ProductGroup = require('../models/ProductGroup.js');
 var Product = require('../models/Product.js');
 
 router.get('/', function(req, res, next) {
 	
-	// Create IP Camera Producten
+	// Create IP Camera Products
 	Product.create([{
-		merk: 'Dahua',
+		brand: 'Dahua',
 		model: 'DH-IPC-HFW2231TP-ZS',
-		eigenschappen: ['Bullet', 'Starlight', 'VariFocal', 'SNMP', '2MP', 'PoE'],
-		inkoopprijs: 235,
-		verkoopprijs: 308,
-		artikelnummer: '20320316',
-		leverancier: 'www.smartsd.com'
+		properties: ['Bullet', 'Starlight', 'VariFocal', 'SNMP', '2MP', 'PoE'],
+		purchasePrice: 235,
+		sellingPrice: 308,
+		articleNumber: '20320316',
+		supplier: 'www.smartsd.com'
 	}, {
-		merk: 'Dahua',
+		brand: 'Dahua',
 		model: 'DH-SD65F230F-HNI',
-		eigenschappen: ['PTZ', 'Dome', 'Starlight', 'VariFocal', 'SNMP', '2MP', 'PoE+'],
-		inkoopprijs: 1000,
-		verkoopprijs: 1600,
-		artikelnummer: '20320149',
-		leverancier: 'www.smartsd.com'
+		properties: ['PTZ', 'Dome', 'Starlight', 'VariFocal', 'SNMP', '2MP', 'PoE+'],
+		purchasePrice: 1000,
+		sellingPrice: 1600,
+		articleNumber: '20320149',
+		supplier: 'www.smartsd.com'
 	}], function(cameraProductErr, cameraProductObject) {
 		if (cameraProductErr) return next(cameraProductErr);
 		console.log('1');
-		// Create Recorders + Schijven Producten
+		// Create Recorders + Schijven Products
 		Product.create([{
-			merk: 'Dahua',
+			brand: 'Dahua',
 			model: 'DHI-NVR4416-16P-4KS2',
-			eigenschappen: ['Recorder', '16-kanaals', '16xPoE', 'SNMP', 'H.265'],
-			inkoopprijs: 700,
-			verkoopprijs: 896,
-			artikelnummer: '20320203',
-			leverancier: 'www.smartsd.com'
+			properties: ['Recorder', '16-kanaals', '16xPoE', 'SNMP', 'H.265'],
+			purchasePrice: 700,
+			sellingPrice: 896,
+			articleNumber: '20320203',
+			supplier: 'www.smartsd.com'
 		}, {
-			merk: 'WD',
+			brand: 'WD',
 			model: 'Purple WD40PURZ',
-			eigenschappen: ['4TB'],
-			inkoopprijs: 100,
-			verkoopprijs: 160,
-			artikelnummer: 'WD40PURZ',
-			leverancier: 'www.update.nl'
+			properties: ['4TB'],
+			purchasePrice: 100,
+			sellingPrice: 160,
+			articleNumber: 'WD40PURZ',
+			supplier: 'www.update.nl'
 		}], function(recorderProductErr, recorderProductObject) {
 			if (recorderProductErr) return next(recorderProductErr);
 			console.log('2');
-			// Create Netwerk Toebehoren Producten
+			// Create Netwerk Toebehoren Products
 			Product.create([{
-				merk: 'TP-Link',
+				brand: 'TP-Link',
 				model: 'TL-SG1008D',
-				eigenschappen: ['8-Port', 'Unmanaged', 'Gigabit'],
-				inkoopprijs: 22,
-				verkoopprijs: 45,
-				artikelnummer: '257584',
-				leverancier: 'www.azerty.nl'
+				properties: ['8-Port', 'Unmanaged', 'Gigabit'],
+				purchasePrice: 22,
+				sellingPrice: 45,
+				articleNumber: '257584',
+				supplier: 'www.azerty.nl'
 			}, {
-				merk: 'TP-Link',
+				brand: 'TP-Link',
 				model: 'Jetstream T1600G-28PS',
-				eigenschappen: ['24-Port', 'Managed', 'Gigabit', 'PoE+', 'SNMP', '4xSFP'],
-				inkoopprijs: 250,
-				verkoopprijs: 350,
-				artikelnummer: 'T1600G-28PS',
-				leverancier: 'www.routershop.nl'
+				properties: ['24-Port', 'Managed', 'Gigabit', 'PoE+', 'SNMP', '4xSFP'],
+				purchasePrice: 250,
+				sellingPrice: 350,
+				articleNumber: 'T1600G-28PS',
+				supplier: 'www.routershop.nl'
 			}], function(networkProductErr, networkProductObject) {
 				if (networkProductErr) return next(networkProductErr);
 				console.log('3');
-				// Create Bekabeling Producten
+				// Create Bekabeling Products
 				Product.create([{
-					merk: 'Belden',
+					brand: 'Belden',
 					model: 'CAT5e U/FTP per meter',
-					inkoopprijs: 0.70,
-					verkoopprijs: 1.70,
-					artikelnummer: 'CAT5EUTP',
-					leverancier: 'www.tue.nl'
+					purchasePrice: 0.70,
+					sellingPrice: 1.70,
+					articleNumber: 'CAT5EUTP',
+					supplier: 'www.tue.nl'
 				}, {
-					merk: 'Plastico Fantastico',
+					brand: 'Plastico Fantastico',
 					model: 'Installatiebuis 19mm (¾) per meter',
-					inkoopprijs: 1,
-					verkoopprijs: 2.20,
-					artikelnummer: 'INSTALLBUIS19MM',
-					leverancier: 'www.tue.nl'
+					purchasePrice: 1,
+					sellingPrice: 2.20,
+					articleNumber: 'INSTALLBUIS19MM',
+					supplier: 'www.tue.nl'
 				}, {
-					merk: 'Plastico Fantastico',
+					brand: 'Plastico Fantastico',
 					model: 'Installatiebuis Koppelingen',
-					inkoopprijs: 0.20,
-					verkoopprijs: 0.40,
-					artikelnummer: 'INSTALLKOPP19MM',
-					leverancier: 'www.tue.nl'
+					purchasePrice: 0.20,
+					sellingPrice: 0.40,
+					articleNumber: 'INSTALLKOPP19MM',
+					supplier: 'www.tue.nl'
 				}, {
-					merk: 'Plastico Fantastico',
+					brand: 'Plastico Fantastico',
 					model: 'Installatiebuis Bevestigingen',
-					inkoopprijs: 0.30,
-					verkoopprijs: 0.60,
-					artikelnummer: 'INSTALLBVST19MM',
-					leverancier: 'www.tue.nl'
+					purchasePrice: 0.30,
+					sellingPrice: 0.60,
+					articleNumber: 'INSTALLBVST19MM',
+					supplier: 'www.tue.nl'
 				}, {
-					merk: 'Belden',
+					brand: 'Belden',
 					model: 'UTP RJ45 Connector',
-					inkoopprijs: 0.45,
-					verkoopprijs: 0.85,
-					artikelnummer: 'UTPRJ45CONN',
-					leverancier: 'www.tue.nl'
+					purchasePrice: 0.45,
+					sellingPrice: 0.85,
+					articleNumber: 'UTPRJ45CONN',
+					supplier: 'www.tue.nl'
 				}], function(wiringProductErr, wiringProductObject) {
 					if (wiringProductErr) return next(wiringProductErr);
 					console.log('4');
-					// Create Arbeid 'Producten'
+					// Create Arbeid 'Products'
 					Product.create([{
-						merk: 'Doevendans Beveiliging',
+						brand: 'Doevendans Beveiliging',
 						model: 'Installatiewerk',
-						inkoopprijs: 25,
-						verkoopprijs: 45,
-						artikelnummer: 'CAM-INSTALL',
-						leverancier: 'nvt'
+						purchasePrice: 25,
+						sellingPrice: 45,
+						articleNumber: 'CAM-INSTALL',
+						supplier: 'nvt'
 					}, {
-						merk: 'Doevendans Beveiliging',
+						brand: 'Doevendans Beveiliging',
 						model: 'Montagewerk',
-						inkoopprijs: 25,
-						verkoopprijs: 65,
-						artikelnummer: 'CAM-MONTAGE',
-						leverancier: 'nvt'
+						purchasePrice: 25,
+						sellingPrice: 65,
+						articleNumber: 'CAM-MONTAGE',
+						supplier: 'nvt'
 					}, {
-						merk: 'Doevendans Beveiliging',
+						brand: 'Doevendans Beveiliging',
 						model: 'Programmeerwerk',
-						inkoopprijs: 25,
-						verkoopprijs: 85,
-						artikelnummer: 'CAM-PROGRAM',
-						leverancier: 'nvt'
+						purchasePrice: 25,
+						sellingPrice: 85,
+						articleNumber: 'CAM-PROGRAM',
+						supplier: 'nvt'
 					}, {
-						merk: 'Doevendans Beveiliging',
+						brand: 'Doevendans Beveiliging',
 						model: 'Documenteerwerk',
-						inkoopprijs: 25,
-						verkoopprijs: 45,
-						artikelnummer: 'CAM-DOCUMEN',
-						leverancier: 'nvt'
+						purchasePrice: 25,
+						sellingPrice: 45,
+						articleNumber: 'CAM-DOCUMEN',
+						supplier: 'nvt'
 					}], function(labourProductErr, labourProductObject) {
 						if (labourProductErr) return next(labourProductErr);
 						console.log('5');
-						// Create Cameratoezicht SubCategorieën
-						SubCategorie.create([{
-							naam: 'Camera\'s',
-							Producten: cameraProductObject
+						// Create Cameratoezicht ProductGroup
+						ProductGroup.create([{
+							name: 'Camera\'s',
+							Products: cameraProductObject
 						}, {
-							naam: 'Recorders + Schijven',
-							Producten: recorderProductObject
+							name: 'Recorders + Schijven',
+							Products: recorderProductObject
 						}, {
-							naam: 'Netwerk Toebehoren',
-							Producten: networkProductObject
+							name: 'Netwerk Toebehoren',
+							Products: networkProductObject
 						}, {
-							naam: 'Bekabeling',
-							Producten: wiringProductObject
+							name: 'Bekabeling',
+							Products: wiringProductObject
 						}, {
-							naam: 'Arbeid',
-							Producten: labourProductObject
-						}], function(camSubCategoryErr, camSubCategoryObject) {
-							if (camSubCategoryErr) return next(camSubCategoryErr);
+							name: 'Arbeid',
+							Products: labourProductObject
+						}], function(camProductGroupErr, camProductGroupObject) {
+							if (camProductGroupErr) return next(camProductGroupErr);
 							console.log('6');
 							// Create Cameratoezicht Hoofdcategorie
-							HoofdCategorie.create({
-								naam: 'Cameratoezicht',
-								SubCategorieen: camSubCategoryObject
-							}, function(camMainCategoryErr, camMainCategoryObject) {
-								if (camMainCategoryErr) return next(camMainCategoryErr);
+							Category.create({
+								name: 'Cameratoezicht',
+								ProductGroups: camProductGroupObject
+							}, function(camCategoryErr, camCategoryObject) {
+								if (camCategoryErr) return next(camCategoryErr);
 								console.log('7');
 								// Create Offerte entry
-								Offerte.create({
-									klant: 'Washin7 Nijmegen',
-									straathuisnummer: 'Hoofdstraat 1',
-									postcode: '1234AB',
-									plaats: 'Nijmegen',
-									telefoon: '01-23456789',
+								Offer.create({
+									customer: 'Washin7 Nijmegen',
+									address: 'Hoofdstraat 1',
+									postalCode: '1234AB',
+									city: 'Nijmegen',
+									phone: '01-23456789',
 									email: 'nijmegen@washin7.nl',
 									project: '2018-045',
-									HoofdCategorieen: camMainCategoryObject
+									Categories: camCategoryObject
 								}, function(err, data) {
 									if (err) return next(err);
 									console.log('8');
@@ -194,9 +194,9 @@ router.delete('/', function(req, res, next) {
 	// Keep track of what's deleted and what not
 	var results = {
 		product: null,
-		subcategorie: null,
-		hoofdcategorie: null,
-		offerte: null
+		productgroup: null,
+		category: null,
+		offer: null
 	}
 	// Delete all Products
 	Product.remove({}, function(errProduct, dataProduct) {
@@ -206,25 +206,25 @@ router.delete('/', function(req, res, next) {
 			results.product = 'success';
 
 			// Delete all SubCategorieën
-			SubCategorie.remove({}, function(errSubcategorie, dataSubcategorie) {
-				if (errSubcategorie) {
-					results.subcategorie = errSubcategorie;
+			ProductGroup.remove({}, function(errProductGroup, dataProductGroup) {
+				if (errProductGroup) {
+					results.productgroup = errProductGroup;
 				} else {
-					results.subcategorie = 'success';
+					results.productgroup = 'success';
 
 					// Delete all HoofdCategorieën
-					HoofdCategorie.remove({}, function(errHoofdcategorie, dataHoofdcategorie) {
-						if (errHoofdcategorie) {
-							results.hoofdcategorie = errHoofdcategorie;
+					Category.remove({}, function(errCategory, dataCategory) {
+						if (errCategory) {
+							results.category = errCategory;
 						} else {
-							results.hoofdcategorie = 'success';
+							results.category = 'success';
 
 							// Delete all Offertes
-							Offerte.remove({}, function(errOfferte, dataOfferte) {
-								if (errOfferte) {
-									results.offerte = errOfferte;
+							Offer.remove({}, function(errOffer, dataOffer) {
+								if (errOffer) {
+									results.offer = errOffer;
 								} else {
-									results.offerte = 'success';
+									results.offer = 'success';
 									res.json(results);
 								}
 							});
