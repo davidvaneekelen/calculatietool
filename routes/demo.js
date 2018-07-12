@@ -28,7 +28,6 @@ router.get('/', function(req, res, next) {
 		supplier: 'www.smartsd.com'
 	}], function(cameraProductErr, cameraProductObject) {
 		if (cameraProductErr) return next(cameraProductErr);
-		console.log('1');
 		// Create Recorders + Schijven Products
 		Product.create([{
 			brand: 'Dahua',
@@ -48,7 +47,6 @@ router.get('/', function(req, res, next) {
 			supplier: 'www.update.nl'
 		}], function(recorderProductErr, recorderProductObject) {
 			if (recorderProductErr) return next(recorderProductErr);
-			console.log('2');
 			// Create Netwerk Toebehoren Products
 			Product.create([{
 				brand: 'TP-Link',
@@ -68,7 +66,6 @@ router.get('/', function(req, res, next) {
 				supplier: 'www.routershop.nl'
 			}], function(networkProductErr, networkProductObject) {
 				if (networkProductErr) return next(networkProductErr);
-				console.log('3');
 				// Create Bekabeling Products
 				Product.create([{
 					brand: 'Belden',
@@ -107,7 +104,6 @@ router.get('/', function(req, res, next) {
 					supplier: 'www.tue.nl'
 				}], function(wiringProductErr, wiringProductObject) {
 					if (wiringProductErr) return next(wiringProductErr);
-					console.log('4');
 					// Create Arbeid 'Products'
 					Product.create([{
 						brand: 'Doevendans Beveiliging',
@@ -139,7 +135,6 @@ router.get('/', function(req, res, next) {
 						supplier: 'nvt'
 					}], function(labourProductErr, labourProductObject) {
 						if (labourProductErr) return next(labourProductErr);
-						console.log('5');
 						// Create Cameratoezicht ProductGroup
 						ProductGroup.create([{
 							name: 'Camera\'s',
@@ -158,14 +153,12 @@ router.get('/', function(req, res, next) {
 							Products: labourProductObject
 						}], function(camProductGroupErr, camProductGroupObject) {
 							if (camProductGroupErr) return next(camProductGroupErr);
-							console.log('6');
 							// Create Cameratoezicht Hoofdcategorie
 							Category.create({
 								name: 'Cameratoezicht',
 								ProductGroups: camProductGroupObject
 							}, function(camCategoryErr, camCategoryObject) {
 								if (camCategoryErr) return next(camCategoryErr);
-								console.log('7');
 								// Create Offerte entry
 								Offer.create({
 									customer: 'Washin7 Nijmegen',
@@ -178,7 +171,6 @@ router.get('/', function(req, res, next) {
 									Categories: camCategoryObject
 								}, function(err, data) {
 									if (err) return next(err);
-									console.log('8');
 									res.json(data);
 								});
 							});
