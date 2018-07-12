@@ -49,6 +49,12 @@ Update Category by ID
 ### DELETE: /categories/:id
 Delete Category by ID
 
+### GET: /categories/:id/productgroups
+Get all ProductGroups of Category by ID
+
+### GET: /categories/:id/productgroups/products
+Get all Products of all ProductGroups of Category by ID
+
 
 ## ProductGroups
 
@@ -72,6 +78,9 @@ Update ProductGroup by ID
 
 ### DELETE: /productgroups/:id
 Delete ProductGroup by ID
+
+### GET: /productgroups/:id/products
+Get all Products of ProductGroup by ID
 
 
 ## Product

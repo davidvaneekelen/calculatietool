@@ -63,4 +63,15 @@ router.delete('/:id', function(req, res, next) {
   });
 });
 
+/* GET ALL PRODUCTS OF PRODUCTGROUP BY ID */
+router.get('/:id/products', function(req, res, next) {
+  console.log('HOIIII');
+  ProductGroup.findById(req.params.id).populate({
+    path: 'Products'
+  }).exec(function(err, data) {
+    if (err) return next(err);
+    res.json(data.Products);
+  });
+});
+
 module.exports = router;
