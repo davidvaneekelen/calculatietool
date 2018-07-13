@@ -17,7 +17,8 @@ router.get('/', function(req, res, next) {
 		purchasePrice: 235,
 		sellingPrice: 308,
 		articleNumber: '20320316',
-		supplier: 'www.smartsd.com'
+		supplier: 'www.smartsd.com',
+		amount: 2
 	}, {
 		brand: 'Dahua',
 		model: 'DH-SD65F230F-HNI',
@@ -25,7 +26,8 @@ router.get('/', function(req, res, next) {
 		purchasePrice: 1000,
 		sellingPrice: 1600,
 		articleNumber: '20320149',
-		supplier: 'www.smartsd.com'
+		supplier: 'www.smartsd.com',
+		amount: 1
 	}], function(cameraProductErr, cameraProductObject) {
 		if (cameraProductErr) return next(cameraProductErr);
 		// Create Recorders + Schijven Products
@@ -36,7 +38,8 @@ router.get('/', function(req, res, next) {
 			purchasePrice: 700,
 			sellingPrice: 896,
 			articleNumber: '20320203',
-			supplier: 'www.smartsd.com'
+			supplier: 'www.smartsd.com',
+			amount: 1
 		}, {
 			brand: 'WD',
 			model: 'Purple WD40PURZ',
@@ -44,7 +47,8 @@ router.get('/', function(req, res, next) {
 			purchasePrice: 100,
 			sellingPrice: 160,
 			articleNumber: 'WD40PURZ',
-			supplier: 'www.update.nl'
+			supplier: 'www.update.nl',
+			amount: 1
 		}], function(recorderProductErr, recorderProductObject) {
 			if (recorderProductErr) return next(recorderProductErr);
 			// Create Netwerk Toebehoren Products
@@ -55,7 +59,8 @@ router.get('/', function(req, res, next) {
 				purchasePrice: 22,
 				sellingPrice: 45,
 				articleNumber: '257584',
-				supplier: 'www.azerty.nl'
+				supplier: 'www.azerty.nl',
+				amount: 4
 			}, {
 				brand: 'TP-Link',
 				model: 'Jetstream T1600G-28PS',
@@ -63,7 +68,8 @@ router.get('/', function(req, res, next) {
 				purchasePrice: 250,
 				sellingPrice: 350,
 				articleNumber: 'T1600G-28PS',
-				supplier: 'www.routershop.nl'
+				supplier: 'www.routershop.nl',
+				amount: 0
 			}], function(networkProductErr, networkProductObject) {
 				if (networkProductErr) return next(networkProductErr);
 				// Create Bekabeling Products
@@ -73,35 +79,40 @@ router.get('/', function(req, res, next) {
 					purchasePrice: 0.70,
 					sellingPrice: 1.70,
 					articleNumber: 'CAT5EUTP',
-					supplier: 'www.tue.nl'
+					supplier: 'www.tue.nl',
+					amount: 300
 				}, {
 					brand: 'Plastico Fantastico',
 					model: 'Installatiebuis 19mm (¾) per meter',
 					purchasePrice: 1,
 					sellingPrice: 2.20,
 					articleNumber: 'INSTALLBUIS19MM',
-					supplier: 'www.tue.nl'
+					supplier: 'www.tue.nl',
+					amount: 50
 				}, {
 					brand: 'Plastico Fantastico',
 					model: 'Installatiebuis Koppelingen',
 					purchasePrice: 0.20,
 					sellingPrice: 0.40,
 					articleNumber: 'INSTALLKOPP19MM',
-					supplier: 'www.tue.nl'
+					supplier: 'www.tue.nl',
+					amount: 25
 				}, {
 					brand: 'Plastico Fantastico',
 					model: 'Installatiebuis Bevestigingen',
 					purchasePrice: 0.30,
 					sellingPrice: 0.60,
 					articleNumber: 'INSTALLBVST19MM',
-					supplier: 'www.tue.nl'
+					supplier: 'www.tue.nl',
+					amount: 100
 				}, {
 					brand: 'Belden',
 					model: 'UTP RJ45 Connector',
 					purchasePrice: 0.45,
 					sellingPrice: 0.85,
 					articleNumber: 'UTPRJ45CONN',
-					supplier: 'www.tue.nl'
+					supplier: 'www.tue.nl',
+					amount: 30
 				}], function(wiringProductErr, wiringProductObject) {
 					if (wiringProductErr) return next(wiringProductErr);
 					// Create Arbeid 'Products'
@@ -111,28 +122,32 @@ router.get('/', function(req, res, next) {
 						purchasePrice: 25,
 						sellingPrice: 45,
 						articleNumber: 'CAM-INSTALL',
-						supplier: 'nvt'
+						supplier: 'nvt',
+						amount: 6
 					}, {
 						brand: 'Doevendans Beveiliging',
 						model: 'Montagewerk',
 						purchasePrice: 25,
 						sellingPrice: 65,
 						articleNumber: 'CAM-MONTAGE',
-						supplier: 'nvt'
+						supplier: 'nvt',
+						amount: 12
 					}, {
 						brand: 'Doevendans Beveiliging',
 						model: 'Programmeerwerk',
 						purchasePrice: 25,
 						sellingPrice: 85,
 						articleNumber: 'CAM-PROGRAM',
-						supplier: 'nvt'
+						supplier: 'nvt',
+						amount: 3.5
 					}, {
 						brand: 'Doevendans Beveiliging',
 						model: 'Documenteerwerk',
 						purchasePrice: 25,
 						sellingPrice: 45,
 						articleNumber: 'CAM-DOCUMEN',
-						supplier: 'nvt'
+						supplier: 'nvt',
+						amount: 1.5
 					}], function(labourProductErr, labourProductObject) {
 						if (labourProductErr) return next(labourProductErr);
 						// Create Cameratoezicht ProductGroup

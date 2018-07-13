@@ -7,7 +7,8 @@ var ProductSchema = new mongoose.Schema({
   purchasePrice: Number,
   sellingPrice: Number,
   articleNumber: String,
-  supplier: String
+  supplier: String,
+  amount: Number
 });
 
 module.exports = mongoose.model('Product', ProductSchema);
