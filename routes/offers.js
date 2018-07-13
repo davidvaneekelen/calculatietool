@@ -221,23 +221,28 @@ router.get('/:id/excel', function(req, res, next) {
             sheet.getCell('A' + rows).value = prd.amount;
             
             // Brand + Model
+            // If its Labour, we skip the Brand (Doevendans Beveiliging)
             sheet.mergeCells('B' + rows + ':E' + rows);
-            sheet.getCell('B' + rows).value = prd.brand + " " + prd.model;
+            if (prd.brand == 'Doevendans Beveiliging') {
+              sheet.getCell('B' + rows).value = prd.model;
+            } else {
+              sheet.getCell('B' + rows).value = prd.brand + " " + prd.model;
+            }            
 
             // Prices
-            sheet.getCell('F' + rows).value = '€ ' + prd.purchasePrice;
-            sheet.getCell('G' + rows).value = '€ ' + prd.sellingPrice;
+            sheet.getCell('F' + rows).value = '€ ' + (prd.purchasePrice.toFixed(2));
+            sheet.getCell('G' + rows).value = '€ ' + (prd.sellingPrice.toFixed(2));
 
             // Margins
-            sheet.getCell('H' + rows).value = (((100/prd.purchasePrice) * prd.sellingPrice) - 100) + ' %';
-            sheet.getCell('I' + rows).value = '€ ' + (prd.sellingPrice - prd.purchasePrice);
+            sheet.getCell('H' + rows).value = ((((100/prd.purchasePrice) * prd.sellingPrice) - 100).toFixed(2)) + ' %';
+            sheet.getCell('I' + rows).value = '€ ' + ((prd.sellingPrice - prd.purchasePrice).toFixed(2));
 
             // Subtotals
             var subTotalPurchasePrice = prd.amount * prd.purchasePrice;
             var subTotalSellingPrice = prd.amount * prd.sellingPrice;
-            sheet.getCell('J' + rows).value = '€ ' + subTotalPurchasePrice;
-            sheet.getCell('K' + rows).value = '€ ' + subTotalSellingPrice;
-            sheet.getCell('L' + rows).value = '€ ' + (subTotalSellingPrice - subTotalPurchasePrice);
+            sheet.getCell('J' + rows).value = '€ ' + (subTotalPurchasePrice.toFixed(2));
+            sheet.getCell('K' + rows).value = '€ ' + (subTotalSellingPrice.toFixed(2));
+            sheet.getCell('L' + rows).value = '€ ' + ((subTotalSellingPrice - subTotalPurchasePrice).toFixed(2));
 
             rows++;
           }
